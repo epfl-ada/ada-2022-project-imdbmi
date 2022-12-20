@@ -1,5 +1,10 @@
-data/raw
+data/raw/
+models/
 # preprocessed_data/
+*.parquet.gzip
+*.zip
+*.model
+
 
 
 # Byte-compiled / optimized / DLL files
