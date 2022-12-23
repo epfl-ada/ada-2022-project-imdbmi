@@ -29,10 +29,10 @@ we divided our reseach questions into two categories: **On screen** and **Off sc
 
 ### Off screen
 - Does the gender of lead actors, director or producer impact the revenue of a movie ?
-- Are the Hollywood stars just like us ?
 - Would a more diverse cast in terms of age help achieve higher box office revenues ?
 
 ### On screen
+- Are the Hollywood stars just like us ?
 - How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
 
 
@@ -61,18 +61,18 @@ The first step was to compare the gender distribution of the cast over time and 
 - $H_0: p \leq .05$ Whethever a cast is diverse or not **has no** effect on the box office value
 - $H_a: p \gt .05$ A not diverse cast **has** a higher box office value
 
-> ### 2) Are the Hollywood stars just like us?
-
-Before analyzing our data, we first need to gather some additional information to compare our data to. This information 
-will be the ethnicity distribution and the average height and age of woman and man in the english speaking countries since 
-these are the countries for which our data is representative. After that, we plot the distributions of the ethnicity, gender, height and age in CMU dataset over time and compare them to the gathered information.
-
-> ### 3) Would a more diverse cast in terms of age help achieve higher box office revenues? 
+> ### 2) Would a more diverse cast in terms of age help achieve higher box office revenues? 
 
 Similar to the first research question ```Does the gender of lead actors, director or producer impact the revenue of a movie?```, we will analyze how the age affects the revenue of movies. 
 To begin with let's define two metrics that reflect the diversity in age of the cast members: mean age and max difference in age. And then we performed a regression analysis to study the correlation between mean cast age, max cast age, and the movie box revenue. And we study the movie for every ten years and anylze them in their own genere.
 
 ## On screen
+
+> ### 3) Are the Hollywood stars just like us?
+
+Before analyzing our data, we first need to gather some additional information to compare our data to. This information 
+will be the ethnicity distribution and the average height and age of woman and man in the english speaking countries since 
+these are the countries for which our data is representative. After that, we plot the distributions of the ethnicity, gender, height and age in CMU dataset over time and compare them to the gathered information.
 
 > ### 4) How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
 
