@@ -1,4 +1,3 @@
-# One hundred years of cinema - The History of Diversity in Cinema
 # :100: years of cinema - The History of Diversity in Cinema
 
 
