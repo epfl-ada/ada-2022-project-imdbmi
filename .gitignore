@@ -1,5 +1,16 @@
-# data/raw
+data/raw/subtitles
+data/raw/MovieSummaries
+
+
+# models/
 # preprocessed_data/
+*.parquet.gzip
+*.zip
+*.model
+*.npy
+*.id2word
+*.state
+*.html
 
 
 # Byte-compiled / optimized / DLL files
