@@ -27,11 +27,11 @@ To study the revenue we first need to adjust the revenue according to the inflat
 we divided our reseach questions into two categories: **On screen** and **Off screen** where we will take a deeper look at the diversity in the movie industry.
 
 ### Off screen
-- Does the gender of lead actors, director or producer impact the revenue of a movie?
-- Are the Hollywood stars just like us?
+- Does the gender of lead actors, director or producer impact the revenue of a movie ?
+- Are the Hollywood stars just like us ?
+- Would a more diverse cast in terms of age help achieve higher box office revenues ?
 
 ### On screen
-- Would a more diverse cast in terms of age help achieve higher box office revenues?
 - How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
 
 
@@ -66,11 +66,12 @@ Before analyzing our data, we first need to gather some additional information t
 will be the ethnicity distribution and the average height and age of woman and man in the english speaking countries since 
 these are the countries for which our data is representative. After that, we plot the distributions of the ethnicity, gender, height and age in CMU dataset over time and compare them to the gathered information.
 
-## On screen
-
 > ### 3) Would a more diverse cast in terms of age help achieve higher box office revenues? 
 
-Similar to the first research question ```Does the gender of lead actors, director or producer impact the revenue of a movie?```, we will analyze how the age affects the revenue of movies.
+Similar to the first research question ```Does the gender of lead actors, director or producer impact the revenue of a movie?```, we will analyze how the age affects the revenue of movies. 
+
+## On screen
+
 
 > ### 4) How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
 
