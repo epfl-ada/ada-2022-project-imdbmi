@@ -1,0 +1,6 @@
+# Ignore all raw files except the README.md
+*
+
+!.gitignore
+!README.md
+!CPIAUCNS.csv

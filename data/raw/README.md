@@ -1,0 +1,1 @@
+The raw data which can be found [here](https://drive.google.com/drive/u/1/folders/1DvPhTnAp6LcglbAiGKCT2UiHklUtQMzy) needs to be downloaded and extracted in this folder to run the scripts in [data_collection](../../data_collection/).
