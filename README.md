@@ -45,7 +45,7 @@ we divided our reseach questions into two categories: **On screen** and **Off sc
     ├── data_preprocessing      # Contains the scripts that were used to create the files under /data/processed
     ├── models                  # Contains the NLP models used
     ├── plots                   # Contains all the plots that were created
-    ├── Final.ipynb          # The notebook containing our results
+    ├── Final.ipynb             # The notebook containing our results
     └── README.md               # README
 
 The source code of [data story](https://imdbmi.github.io) can be found under [this](https://github.com/imdbmi/imdbmi.github.io) repository and the additional processed datasets can be accessed at [here](https://drive.google.com/drive/folders/1FycaszmTdI2UjO06tgsg5nqvtpLG_z4s?usp=sharing).
@@ -73,7 +73,6 @@ Similar to the first research question ```Does the gender of lead actors, direct
 To begin with let's define two metrics that reflect the diversity in age of the cast members: mean age and max difference in age. And then we performed a regression analysis to study the correlation between mean cast age, max cast age, and the movie box revenue. And we study the movie for every ten years and anylze them in their own genere.
 
 ## On screen
-
 
 > ### 4) How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
 
