@@ -70,6 +70,7 @@ these are the countries for which our data is representative. After that, we plo
 > ### 3) Would a more diverse cast in terms of age help achieve higher box office revenues? 
 
 Similar to the first research question ```Does the gender of lead actors, director or producer impact the revenue of a movie?```, we will analyze how the age affects the revenue of movies. 
+To begin with let's define two metrics that reflect the diversity in age of the cast members: mean age and max difference in age. And then we performed a regression analysis to study the correlation between mean cast age, max cast age, and the movie box revenue. And we study the movie for every ten years and anylze them in their own genere.
 
 ## On screen
 
