@@ -1,4 +1,6 @@
 # One hundred years of cinema - The History of Diversity in Cinema
+# :100: years of cinema - The History of Diversity in Cinema
+
 
 ### Disclaimer
 The following content may be disturbing or triggering to some viewers. It includes themes of violence, abuse, and trauma. If you feel that this content may be disturbing to you, please exercise caution before continuing.
