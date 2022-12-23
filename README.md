@@ -1,4 +1,4 @@
-# Over the Rainbow :rainbow: - The history of diversity in cinema
+# One hundred years of cinema - The History of Diversity in Cinema
 
 ### Disclaimer
 The following content may be disturbing or triggering to some viewers. It includes themes of violence, abuse, and trauma. If you feel that this content may be disturbing to you, please exercise caution before continuing.
@@ -44,7 +44,7 @@ we divided our reseach questions into two categories: **On screen** and **Off sc
     ├── data_preprocessing      # Contains the scripts that were used to create the files under /data/processed
     ├── models                  # Contains the NLP models used
     ├── plots                   # Contains all the plots that were created
-    ├── Analysis.md             # The notebook containing our results
+    ├── Final.ipynb          # The notebook containing our results
     └── README.md               # README
 
 The source code of [data story](https://imdbmi.github.io) can be found under [this](https://github.com/imdbmi/imdbmi.github.io) repository and the additional processed datasets can be accessed at [here](https://drive.google.com/drive/folders/1FycaszmTdI2UjO06tgsg5nqvtpLG_z4s?usp=sharing).
