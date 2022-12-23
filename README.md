@@ -1,27 +1,17 @@
-# Over the Rainbow - History of diversity in cinema
+# Over the Rainbow :rainbow: - The history of diversity in cinema
+
+### Disclaimer
+The following content may be disturbing or triggering to some viewers. It includes themes of violence, abuse, and trauma. If you feel that this content may be disturbing to you, please exercise caution before continuing.
 
 ## Abstract
 ---
-Since the first moving picture, Roundhay Garden shot in 1888 cinema had an incredible impact on humanity as a whole. Allowing people to see and through movies experience things which wouldn’t ever be possible.
- 
-But looking at the incredible diversity of our planet, the question we want to answer is how representative is the cinema of this diversity and how much did it change during the 20th and early 21st century.
- 
-By using CMU movie dataset, we will study how did the diversity of representation changed through time and correlate with changes in society as a whole.
+The movie industry has long been criticized for its lack of diversity both **on** and **off** screen. Representation of marginalized groups remains inadequate, with many voices and perspectives still underrepresented or completely absent from mainstream films. This lack of diversity not only perpetuates harmful stereotypes and biases, but it also limits the stories and perspectives that are told and negatively impacts the creativity of movie making. For a better visualization of our porject, please refer to our [data story](https://imdbmi.github.io).
 
-
-## Research Questions
+## Data
 ---
-1) What is the evolution of the gender Gap in movies? Is there a significant difference in number of movies directed by men vs women? And does the gender of lead actor or director impact the revenue of a movie?
+### CMU Movie Summary Corpus
+The [CMU Movie Summary Corpus](http://www.cs.cmu.edu/~ark/personas/) contains over 40,000 movie plot summaries extracted from Wikipedia and also metadata such as characters, genre, release date information.
 
-2) Does diversity impact the financial success of a movie? Using revenue we want to analyze if the most succesful movies are more or less diverse than the average.
-
-3) Lingustic analysis of LGBT characters: How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
-
-4) Using the ethnicity, gender, height and age in CMU dataset we want to analyze how comparable are movies with the average population of its countries and how did it change over time.
-
-## Additional datasets
----
-Additional processed dataset can be accessed at [here](https://drive.google.com/drive/folders/1FycaszmTdI2UjO06tgsg5nqvtpLG_z4s?usp=sharing).
 ### Wikidata
 Using the Freebase IDs from our dataset, we created a script to collect for every movie a .JSON file with the correspond wikidata. 
 For this, we first created a SPARQL query using the [Wikidata query builder](https://query.wikidata.org/querybuilder/?uselang=en) and a sample Freebase ID and the ran it for every Freebase ID in our dataset. This data will be mainly used to get some additional information about the movies such as review scores, costs, age rating, assements, etc.
@@ -29,60 +19,71 @@ For this, we first created a SPARQL query using the [Wikidata query builder](htt
 ### English subtitles
 [OpenSubtitles](https://opus.nlpl.eu/OpenSubtitles-v2018.php) is a collection of subtitiles in various languages. In our case, we are only interested in the english subtitles. The subtitles are contained in .xml files with the correspoinding timestamps. Using a script, we then only collect the content of the files without the timestamps and match the content to our CMU Movie Summary dataset. In total, there were around 27k subtitles that could be matched with IMDB IDs to our dataset. We will then later be able to use matching or nlp models to help answer some of the research questions
 
-## IMDB data
-[Freie Universität Berlin IMDB dataset](http://ftp.fu-berlin.de/pub/misc/movies/database/frozendata/) is a collection of various data scrapped from IMDB, if we will be missing some data from CMU or other datasets, we intend to complete it with this.
+### Consumer Price Index for All Urban Consumers
+To study the revenue we first need to adjust the revenue according to the inflation rate. To this end we use the inflation rate data from [Federal Reserve Economic Data](https://fred.stlouisfed.org/series/CPIAUCNS). Since this inflation data goes all the way back to 1913, therefore, it lends itself to our analysis of film revenues beginning in the early 19th century.
 
+## Research Questions
+---
+we divided our reseach questions into two categories: **On screen** and **Off screen** where we will take a deeper look at the diversity in the movie industry.
+
+### Off screen
+- Does the gender of lead actors, director or producer impact the revenue of a movie?
+- Are the Hollywood stars just like us?
+
+### On screen
+- Would a more diverse cast in terms of age help achieve higher box office revenues?
+- How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
+
+
+## Project structure
+---
+    ├── data                    # download your train and test dataset here
+    │   ├── processed           # Contains processed .csv and .json files
+    |   ├── raw                 # Contains the raw data
+    ├── data_collection         # Contains the scripts that were used to gather the data found under /data/raw
+    ├── data_preprocessing      # Contains the scripts that were used to create the files under /data/processed
+    ├── models                  # Contains the NLP models used
+    ├── plots                   # Contains all the plots that were created
+    ├── Analysis.md             # The notebook containing our results
+    └── README.md               # README
+
+The source code of [data story](https://imdbmi.github.io) can be found under [this](https://github.com/imdbmi/imdbmi.github.io) repository and the additional processed datasets can be accessed at [here](https://drive.google.com/drive/folders/1FycaszmTdI2UjO06tgsg5nqvtpLG_z4s?usp=sharing).
 
 ## Methods
 ---
-> ### 1) What is the evolution of the gender Gap in movies? Is there a significant difference in number of movies directed by men vs women? And does the gender of lead actor or director impact the revenue of a movie?
+## Off screen
+> ### 1) Does the gender of lead actors, director or producer impact the revenue of a movie?
 
-To analyze the gender gap, we will look at different aspects of gender inequalities. 
-The first one will be to compare the gender distribution of the cast over time. Then we will be using 
-hypothesis testing to determine if the gender of lead actors or director has a direct impact on the revenue of the movie.
+To analyze the gender gap, we looked at different aspects of gender inequalities. We divided the genders into either ```male``` or ```female``` since we do not have enough data to include other genders.
 
-> ### 2) Does diversity impact the financial success of a movie? Using revenue we want to analyze if the most succesful movies are more or less diverse than the average. 
+The first step was to compare the gender distribution of the cast over time and also by genre. Then, we use a linear regression model to try to fit the box office value using the ratio of males. Afterwards, we used hypothesis testing to determine if the gender has an impact on the revenue. For this we divided the data into 2 populations, one that is not diverse (ratio of male or female is either below 40% or above 60%) and one which is diverse and the used the following hypotheses:
+- $H_0: p \leq .05$ Whethever a cast is diverse or not **has no** effect on the box office value
+- $H_a: p \gt .05$ A not diverse cast **has** a higher box office value
 
-To answer this question, we will compute an *diversity* index (could be similar to [MediaVersity](https://www.mediaversityreviews.com/how-we-grade)) 
-which consists of a combination of different features such as e.g. gender, age, height, ethnicity, etc. 
-Using this new index, we will be able to compare the diversity with the box office revenue to determine if 
-the diversity has an impact on the financial success of a movie by using hypothesis testing.
-
-> ### 3) Lingustic analysis of LGBT characters: How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
-
-Firstly, we will analyze the occurence of LGBT related terms over time without looking at the connotation using 
-matching to analyze if the LGBT topic in general increased in the movies over time.
-
-Then, in a second time, we will be using word embedding techniques such as Word2Vec or FastText for sentiment 
-analysis to analyze how the portrayal of LGBT characters changed over time.
-
-> ### 4) Using the ethnicity, gender, height and age in CMU dataset we want to analyze how comparable are movies with the average population of its countries and how did it change over time.
+> ### 2) Are the Hollywood stars just like us?
 
 Before analyzing our data, we first need to gather some additional information to compare our data to. This information 
 will be the ethnicity distribution and the average height and age of woman and man in the english speaking countries since 
-these are the countries for which our data is representative. After that, we can use hypothesis testing to analyze 
-if the movie industry in the english speaking countries has similar distributions.
+these are the countries for which our data is representative. After that, we plot the distributions of the ethnicity, gender, height and age in CMU dataset over time and compare them to the gathered information.
+
+## On screen
+
+> ### 3) Would a more diverse cast in terms of age help achieve higher box office revenues? 
+
+Similar to the first research question ```Does the gender of lead actors, director or producer impact the revenue of a movie?```, we will analyze how the age affects the revenue of movies.
+
+> ### 4) How did the terms and tones used changed when talking about a LGBT character? And how did positive LGBT potrayal change over time?
+
+We perform the analysis using two different models on two different data modalities. The first model is VADER (Valence Aware Dictionary for Sentiment Reasoning) which is a lexicon and rule-based sentiment analysis tool. The second model is a transformer based sentiment analyzer, roBERTa-base, that is trained on ~124M tweets from January 2018 to December 2021. Although we don't classify tweets, a conversation in a subtitle usually reflects the characteristics of daily language used in public. In addition, an advantage of a transformer-based model over lexicon & rule-based method is that transformers can also capture the contextual information thank to the self-attention mechanism where each token interacts with each others. Hence we hypothesized that this model should be good enough capture sentiment scores of conversations in subtitles.
+
+In terms of data modalities, we both used raw text inputs (not tokenized&lemmatized) and tokenized context windows to the models. In the context window approach, we start with tokenized subtitle documents and search for occurrences of a keyword. For each occurrence, we extract a context window around the keyword. In the other approach, we first identify a keyword occurs in the list of tokens of a document. If it does, we read the raw subtitle file and return the sentences containing the keyword. However, this approach is not precises as we look at the whole text, rather than tokens, hence a sentence containing woman can be return for the keyword man, since man is 'suffix' of woman. To remove false positives, we feed sentences through an NLP tokenization pipeline and check whether a keyword is actually a token of the sentence.
 
 
-## Proposed timeline
+## Contributions
 ---
-* 11.11.22 - Combine subtitle data set with CMU and clean it into an NLP friendly form
-* 14.11.22 - Finish the script for getting WikiID from Freebase IDs
-* 18.11.22 - Milestone 2
-* 20.11.22 - Integration of all datasets together & run initial word embedding/NLP analyses
-* 25.11.22 - Finalize all of initial analyzes for the different topics & intial visualisations for textual data
-* 04.12.22 - Start writing first draft of the data story
-* 13.12.22 - Deadline for adding any additional visualisations and changes to the data story
-* 18.12.22 - Complete all code implementations and main visualisations and start finalizing the web interface
-* 20.12.22 - Complete analysis and web interface (Buffer time)
-* 23.12.22 - Milestone 3 deadline
-
-
-## Organization within the team
----
-| E-mail | Sciper | Tasks |
+| E-mail | Sciper | Contributions |
 | ------ | ------ | ----- |
-| abdulkadir.gokce@epfl.ch | 336709 | Integrate subtitles to our analysis as well as WikiIDs. Tune and analyze NLP algorithms   |
-| chengkun.li@epfl.ch | 340485 | Create impactful visualisations. Develop web interface. Continue exporing different datasets. |
-| iana.peix@epfl.ch | 287074 | Create impactful visualisations. Develop web interface and final text for the data story |
-| maximilian.gangloff@epfl.ch | 322220 | Create impactful visualisations. Finalize final text for data story. |
+| abdulkadir.gokce@epfl.ch | 336709 | Responsible for the repo structure, sentiment analysis and evolution of words which includes the integration of subtitles to the analysis as well as WikiIDs and the tuning and analyze of the NLP algorithms.   |
+| chengkun.li@epfl.ch | 340485 | Responsible for the adaption of the revenue to inflation, the analysis between age and revenue and the web interface. |
+| iana.peix@epfl.ch | 287074 | Responsible for the ethnicity analysis, data story and web interface |
+| maximilian.gangloff@epfl.ch | 322220 | Responsible for the repo structure and gender analysis which includes which includes the processing of the gathered wikidata. |
